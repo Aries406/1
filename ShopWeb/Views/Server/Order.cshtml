@@ -1,0 +1,46 @@
+﻿@model PagedList<ShopWeb.Models.OrderDetail>
+<div class="m-5 ">
+
+    @using (Html.BeginForm("Order", "Server", FormMethod.Get))
+    {
+        <input type="text" name="search" placeholder="輸入搜尋" />
+        <input type="submit" name="submit" value="搜尋" />
+    }
+</div>
+@using PagedList.Mvc;
+@using PagedList;
+
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">訂單者</th>
+            <th scope="col">商品</th>
+            <th scope="col">數量</th>
+            <th scope="col">金額</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+
+    @foreach (var item in Model)
+    {
+        <tbody>
+            <tr>
+                <td class="price-col">@item.OrderId</td>
+                <td class="price-col">@item.ItemId</td>
+                <td class="price-col"> @item.Quantity</td>
+                <td class="price-col"> @item.UnitPrice</td>
+                <td class="price-col">
+                    <a href="@Url.Action("DeleteCart",new { id = item.OrderId })" onclick="return confirm('確定要刪除嗎?')"><i class="glyphicon glyphicon-trash"></i></a>
+                </td>
+            </tr>
+        </tbody>
+    }
+
+</table>
+
+
+<div class="justify-content-center">
+    @Html.PagedListPager(Model, i => Url.Action("Order", "Server", new { i, search = Request.QueryString["search"] }))
+
+</div>

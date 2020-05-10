@@ -1,0 +1,191 @@
+﻿@model PagedList<ShopWeb.Models.ProductModel>
+@{
+    ViewBag.Title = "Shop";
+}
+@Scripts.Render("~/bundles/js")
+@Styles.Render("~/Content/css")
+<!-- Page Add Section Begin -->
+<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+
+@using PagedList.Mvc;
+@using PagedList;
+
+
+<script>
+    //選擇國家
+    $(function () {
+        $('#CountryId').change(function () {
+            SelectCountry();
+        })
+
+    });
+
+    function AddToCart(item) {
+        let itemId = $(item).attr("itemid");
+        let formData = new FormData();
+        formData.append("ItemId", itemId);
+
+        $.ajax({
+            async: true,
+            type: 'POST',
+            contentType: false,
+            processData: false,
+            data: formData,
+            url: '/Product/Product',
+            success: function (data) {
+                if (data.Success) {
+                    $("#cartItem").text("data.Counter");
+                }
+            },
+            error: function () {
+                alert("有問題");
+            }
+        });
+    }
+
+    function SelectCountry() {
+        let countryId = $('#CountryId option:selected').val();
+
+        $.ajax({
+            type: "Post",
+            url: "/Product/GetZoneView?CountryId=" + countryId,
+            contentType: "html",
+            success: function (data) {
+                $('#ZoneId').empty();
+                $('#ZoneId').append(data);
+            }
+        });
+    }
+
+</script>
+
+<div class="container">
+    <!-- Page Add Section End -->
+    <!-- Categories Page Section Begin -->
+
+
+    <section class="p-t-45 p-b-65">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-sm-6 col-md-4 col-lg-3 p-b-50">
+                    <div class="left_bar p-r-20 p-r-0-sm">
+                        <!-- 左側選單 -->
+                        <div id="collapse_all">
+                            <div class="row" id="collapse_all">
+                                <div class="select_list">
+
+                                </div>
+                            </div>
+                        </div>
+                        @using (Html.BeginForm("Product", "Product", FormMethod.Get))
+                        {
+                            @Html.DropDownList("SortZone", "全部")
+                        <div class="search-product pos-relative bo4 of-hidden">
+                            <input class="s-text7 size6 p-l-23 p-r-50" type="text" name="search" placeholder="輸入搜尋" />
+                            <button class="flex-c-m size5 ab-r-m color2 color0-hov trans-0-4">
+                                <input type="submit" name="submit" value="" />
+                                <i class="fs-12 fa fa-search" aria-hidden="true"></i>
+                            </button>
+
+
+                        </div>
+                    }
+                        <div class="wrapper">
+                            <!-- Sidebar -->
+
+                            <nav>
+                                <ul class="list-unstyled components">
+                                    <li class="active">
+                                        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">全部</a>
+                                        <ul class="collapse list-unstyled" id="homeSubmenu">
+                                            @foreach (var item in Model )
+                                            {
+                                                <a href="">
+                                                    <li>
+                                                        @item.CountryName
+                                                    </li>
+                                                </a>
+                                            }
+                                        </ul>
+                                    </li>
+
+                                </ul>
+                            </nav>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-8 col-lg-9 p-b-50">
+                    <!--  -->
+                    <div class="flex-sb-m flex-w p-b-35">
+                        <div class="flex-w">
+                            <div class="select_zone m-t-5 m-b-5 m-r-10">
+                                @using (Ajax.BeginForm("Product", "Product", new AjaxOptions { UpdateTargetId = "ZoneId" }))
+                                {
+                                    if (ViewBag.CountryList != null)
+                                    {
+                                        @Html.DropDownListFor(model => model.Count, ViewBag.CountryList as SelectList, "全部", new { id = "CountryId", @class = "form-control" })
+                                    }
+                                }
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Product -->
+                    <div class="row" id="ZoneId">
+                        @foreach (var item in Model)
+                        {
+                            <div class="col-sm-12 col-md-6 col-lg-4 p-b-50">
+                                <!-- Block2 -->
+                                <div class="block2">
+                                    <div class=" wrap-pic-w of-hidden pos-relative ">
+                                        <img src="@Url.Content(item.ImagePath)" alt="">
+                                        <div class="block2-overlay trans-0-4">
+                                            <a href="#" class="block2_addwishlist hov-pointer trans-0-4">
+                                                <i class="icon-wishlist icon_heart_alt" aria-hidden="true"></i>
+                                                <i class="icon-wishlist icon_heart dis-none" aria-hidden="true"></i>
+                                            </a>
+
+                                            <div class="add_to_cart w-size1 trans-0-4">
+                                                <!-- Button -->
+                                                <input class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4" type="button" name="AddToCart" value="加入購物車" itemid="@item.ItemId" id="btnAddToCart" onclick="AddToCart(this)" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="block2-txt ">
+                                        <a href="@Url.Action("ProductDetail", new { id = item.ItemName})">
+                                            <li class="block2_name dis-block s-text3 p-b-5">
+                                                @item.ItemName
+                                            </li>
+                                        </a>
+                                        <h6>
+
+                                            <span class="m-text7 p-r-5">
+                                            </span>
+
+                                            <span class="block2_price">
+                                                @item.ItemPrice
+                                            </span> 元起
+                                        </h6>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+
+                    <!-- Pagination -->
+                    <div class="pagination flex-m flex-w ">
+                        @Html.PagedListPager(Model, page => Url.Action("Product", "Product", new { page }))
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+

@@ -1,0 +1,45 @@
+﻿@model IEnumerable<ShopWeb.Models.admin>
+
+    <div class=" mt-5">
+
+
+            @using (Html.BeginForm("Employee", "Server", FormMethod.Get))
+            {
+                <input type="text" name="search" placeholder="輸入搜尋" />
+                <input type="submit" name="submit" value="搜尋" />
+            }
+     
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">帳號</th>
+                <th scope="col">密碼</th>
+                <th scope="col">Email</th>
+                <th scope="col">建立時間</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        @foreach (var item in Model)
+        {
+            <tbody>
+                <tr>
+                    <td class="price-col">@item.Account</td>
+                    <td class="price-col">@item.Password</td>
+                    <td class="price-col"> @item.Email</td>
+                    <td class="price-col"> @item.Created</td>
+                    <td class="price-col">
+                        <a href="@Url.Action("EditAdmin",new { id = item.UserId })"><i class="fas fa-trash"></i></a>
+                    </td>
+                    <td class="price-col">
+                        <a href="@Url.Action("DeleteAdmiin",new { id = item.Account })"><i class="fas fa-trash"></i></a>
+                    </td>
+                </tr>
+            </tbody>
+           
+        }
+
+
+    </table>
+
+    </div>

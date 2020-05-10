@@ -1,0 +1,212 @@
+﻿@model IEnumerable<ShopWeb.Models.ProductModel>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+@Scripts.Render("~/Script/js")
+@Styles.Render("~/Content/css")
+<div class="container">
+    <div id="carouselExampleInterval" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner ">
+            <div class="carousel-item active" data-interval="10000">
+                <img src="~/Content/img/master-slide-01.jpg" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item" data-interval="2000">
+                <img src="~/Content/img/master-slide-02.jpg" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item" data-interval="1000">
+                <img src="~/Content/img/master-slide-03.jpg" class="d-block w-100" alt="...">
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleInterval" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleInterval" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+</div>
+<!-- Hero Slider Begin -->
+<div class="banner bg_white  p-b-40">
+    <div class="container">
+        <div class="py-3">
+            <div class="title_st text-center">
+                <a class="m-text5">
+                    熱門地區
+                </a>
+            </div>
+            <div class="title_nd m-text2 text-center">
+                <span class="count_down_text">熱門行程</span>
+                <span class="count_down_num count_down_hour">24</span>
+                <span class="count_down_point">:</span>
+                <span class="count_down_num count_down_minute">00</span>
+                <span class="count_down_point">:</span>
+                <span class="count_down_num count_down_seconds">00</span>
+                <span class="count_down_text">後結束搶購</span>
+
+            </div>
+        </div>
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-sm-10 col-md-8 col-lg-3 m-l-r-auto ">
+                    <!-- block1 -->
+                    <div class="block1 img_zoom pos-relative m-b-20 ">
+                        <img src="@Url.Content(item.ImagePath)" alt="">
+                        <div class="block1-wrapbtn w-size2 ">
+                            <!-- Button -->
+                            <a href="region.html " class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4 ">
+                                @item.CountryName
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+    </div>
+</div>
+
+
+<!-- Our product -->
+<section class="container">
+
+
+    <div class="title_st text-center">
+        <a class=" m-text5">
+            一起去旅行吧!
+        </a>
+    </div>
+    <!-- Tab01 -->
+    <div class="menu_tab">
+        <!-- Nav tabs -->
+  
+        <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#home">熱門</a></li>
+            <li><a data-toggle="tab" href="#menu1">特價</a></li>
+            <li><a data-toggle="tab" href="#menu2">推薦</a></li>
+        </ul>
+
+        <div class="tab-content">
+            <div id="home" class="tab-pane fade in active">
+                @foreach (var item in ViewBag.hot)
+                {
+                    <div class="col-sm-6 col-md-4 col-lg-4">
+                        <!-- Block2 -->
+                        <div class="block2">
+                            <div class="block2-img wrap-pic-w of-hidden pos-relative block2_labelhot ">
+                                <img src="@Url.Content(item.ImagePath)" alt="">
+                                <div class="block2-overlay trans-0-4 ">
+                                    <a href="# " class="block2_addwishlist hov-pointer trans-0-4 ">
+                                        <i class="icon-wishlist icon_heart_alt " aria-hidden="true "></i>
+                                        <i class="icon-wishlist icon_heart dis-none " aria-hidden="true "></i>
+                                    </a>
+
+                                    <div class="add_to_cart w-size1 trans-0-4 ">
+                                        <!-- Button -->
+                                        <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4 ">
+                                            加入購物車
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="block2-txt p-t-15 ">
+                                <a href="travel-detail.html " class="block2_name dis-block s-text3 p-b-5 ">
+
+                                </a>
+                                <p class="card_text color1">@item.ItemName</p>
+                                <span class="block2_price ">
+                                    @item.ItemPrice
+                                </span> 元起
+                            </div>
+
+                        </div>
+                    </div>
+                }
+            </div>
+            <div id="menu1" class="tab-pane fade">
+                @foreach (var item in ViewBag.sale)
+                {
+                    <div class="col-sm-6 col-md-4 col-lg-4">
+                        <!-- Block2 -->
+                        <div class="block2">
+                            <div class="block2-img wrap-pic-w of-hidden pos-relative block2_labelsale ">
+                                <img src="@Url.Content(item.ImagePath)" alt="">
+                                <div class="block2-overlay trans-0-4 ">
+                                    <a href="# " class="block2_addwishlist hov-pointer trans-0-4 ">
+                                        <i class="icon-wishlist icon_heart_alt " aria-hidden="true "></i>
+                                        <i class="icon-wishlist icon_heart dis-none " aria-hidden="true "></i>
+                                    </a>
+
+                                    <div class="add_to_cart w-size1 trans-0-4 ">
+                                        <!-- Button -->
+                                        <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4 ">
+                                            加入購物車
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="block2-txt p-t-15 ">
+                                <a href="travel-detail.html " class="block2_name dis-block s-text3 p-b-5 ">
+
+                                </a>
+                                <p class="card_text color1">@item.ItemName</p>
+                                <span class="block2_price ">
+                                    @item.ItemPrice
+                                </span> 元起
+                            </div>
+
+                        </div>
+                    </div>
+                }
+            </div>
+            <div id="menu2" class="tab-pane fade">
+                @foreach (var item in ViewBag.recommended)
+                {
+                    <div class="col-sm-6 col-md-4 col-lg-4">
+                        <!-- Block2 -->
+                        <div class="block2">
+                            <div class="block2-img wrap-pic-w of-hidden pos-relative ">
+                                <img src="@Url.Content(item.ImagePath)" alt="">
+                                <div class="block2-overlay trans-0-4 ">
+                                    <a href="# " class="block2_addwishlist hov-pointer trans-0-4 ">
+                                        <i class="icon-wishlist icon_heart_alt " aria-hidden="true "></i>
+                                        <i class="icon-wishlist icon_heart dis-none " aria-hidden="true "></i>
+                                    </a>
+
+                                    <div class="add_to_cart w-size1 trans-0-4 ">
+                                        <!-- Button -->
+                                        <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4 ">
+                                            加入購物車
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="block2-txt p-t-15 ">
+                                <a href="travel-detail.html " class="block2_name dis-block s-text3 p-b-5 ">
+
+                                </a>
+                                <p class="card_text color1">@item.ItemName</p>
+                                <span class="block2_price ">
+                                    @item.ItemPrice
+                                </span> 元起
+                            </div>
+
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+       
+    </div>
+    </div>
+    </div>
+
+    </div>
+    </div>
+</section>
+
+<script type="text/javascript " src="~/Scripts/js/slick-custom.js"></script>
+<script type="text/javascript " src="~/Scripts/js/slick-custom.min.js"></script>

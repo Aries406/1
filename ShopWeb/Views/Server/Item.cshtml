@@ -1,0 +1,112 @@
+﻿@model ShopWeb.Models.ItemModel
+@{
+    ViewBag.Title = "Item";
+}
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+
+<div class="mt-5">
+    <h2 class="text-center">添加商品</h2>
+    <script>
+        $(function () {
+            $("#btnSave").click(function () {
+                SaveItem();
+            });
+        });
+        //清除欄位   
+                 function ResetItem() {　
+                $("#CategoryId").val("");
+                $("#ItemCode").val("");
+                $("#ItemName").val("");
+                $("#Description").val("");
+                $("#ItemPrice").val("");
+                $("#ImagePath").val("");
+            }
+
+        //儲存
+            function SaveItem() {
+                let formData = new FormData();
+                formData.append("CategoryId", $("#CategoryId").val());
+                formData.append("ItemCode", $("#ItemCode").val());
+                formData.append("ItemName", $("#ItemName").val());
+                formData.append("Description", $("#Description").val());
+                formData.append("ItemPrice", $("#ItemPrice").val());
+                formData.append("ImagePath", $("#ImagePath").get(0).files[0]);
+
+                $.ajax({
+                    async: true,
+                    dataType: 'JSON',
+                    type: 'POST',
+                    contentType: false,
+                    processData: false,
+                    url: '/Server/Item',
+                    data: formData,
+                    success: function (data) {
+                        if (data.Success) {
+                            alert(data.Message);
+                            ResetItem();
+                        }
+                                            },
+                    error: function () {
+                        alert("產品加入錯誤");
+                    }
+                });
+            }
+
+
+    </script>
+
+    <div class="row mt-3">
+        <div class="col-md-4">
+            <div class="form-group">
+                國家:
+                @Html.DropDownListFor(model => model.CountryName, new SelectList(Model.CountrySelectListItems, "Value", "Text"),
+               new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="form-group">
+                地區:
+                @Html.DropDownListFor(model => model.ZoneName, new SelectList(Model.CategorySelectListItems, "Value", "Text"),
+            new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="form-group">
+                產品名稱:
+                @Html.TextBoxFor(model => model.ItemName, new { @class = "form-control", autocomplete = "Off" })
+
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="form-group">
+                產品描述:
+                @Html.TextBoxFor(model => model.Description, new { @class = "form-control", autocomplete = "Off" })
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="form-group">
+                價錢:
+                @Html.TextBoxFor(model => model.ItemPrice, new { @class = "form-control", autocomplete = "Off" })
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="form-group">
+                圖片:
+                @Html.TextBoxFor(model => model.ImagePath, new { type = "file", @class = "form-control" })
+
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-5">
+            <input type="button" value="儲存" name="save" class="btn btn-primary" id="btnSave" />
+            <input type="button" value="清除" name="reset" class="btn btn-danger" />
+        </div>
+
+    </div>
+</div>

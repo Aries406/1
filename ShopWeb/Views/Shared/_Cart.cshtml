@@ -1,0 +1,19 @@
+﻿
+    <div class="user-access">
+        @if (Session["CartCounter"] == null)
+        {
+            <a href="@Url.Action("Product","Product",new { id = "cartItem" })">
+                <div class="header_wrapicon fas fa-shopping-bag fa-lg js_show_header_dropdown show_cart">
+                    <span class="cart_amount">0</span>
+                </div>
+            </a>
+        }
+        else
+        {
+            <a href="@Url.Action("ShoppingCart", new { id = "cartItem"})">
+                <div class="header_wrapicon fas fa-shopping-bag fa-lg js_show_header_dropdown show_cart">
+                    <span class="cart_amount">@Session["CartCounter"] </span>
+                </div>
+            </a>
+        }
+    </div>

@@ -1,0 +1,283 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    @Scripts.Render("~/Scripts/js")
+    @Styles.Render("~/Content/css")
+    <script src="~/Scripts/js/"></script>
+
+</head>
+<body class="animsition">
+    @if (Session["Account"] == null || Session["Account"].ToString() != "aaa111")
+    {
+        <!-- Header Section Begin -->
+        <header class="header">
+            <!-- logo -->
+            <div class="wrap_header">
+                <div class="col-6 col-xl-2">
+                    <h1 class="mb-0 text-black h3">
+                        <a>Aries Travel</a>
+                    </h1>
+                </div>
+                <!-- Menu -->
+                <div class="wrap_menu">
+                    <nav class="menu">
+                        <ul class="main_menu">
+                            <li>@Html.ActionLink("首頁", "Index", "Home")</li>
+                            <li>
+                                <a>@Html.ActionLink("商品","Product","Product")</a>
+                                <ul class="sub_menu">
+                                    <li><a>@Html.ActionLink("國內","Product","Product")</a><li>
+                                     <li><a>@Html.ActionLink("國外","Product","Product")</a><li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="cart.html">美食</a>
+                            </li>
+                            <li><a>@Html.ActionLink("關於", "About", "Home")</a>  </li>
+                            <li><a>@Html.ActionLink("聯絡我們", "Contact", "Home")</a>  </li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="container-menu-header-v2">
+                    <div class="topbar2">
+                        <!--  -->
+                        <div class="px-3">
+                            @Html.Partial("_Login")
+                        </div>
+                        @Html.Partial("_Cart")
+                    </div>
+                </div>
+
+                <!-- Header Icon -->
+
+            </div>
+
+            <!-- Header Mobile -->
+            <div class="wrap_header_mobile">
+                <!-- Logo moblie -->
+                <div class="col-6 col-xl-2">
+                    <h1 class="mb-0"><a href="index.html" class="text-black h3 mb-0">Aries Travel</a></h1>
+                </div>
+                <!-- Button show menu -->
+                <div class="header_show_menu">
+                    <!-- Header Icon mobile -->
+                    <div class=" header-icons-mobile">
+                        <!--  -->
+                        <a href="#" class="header_wrapicon dis-block fas fa-user fa-lg px-3 py-3">
+                        </a>
+
+                        <div class="header_wrapicon fas fa-shopping-bag fa-lg js_show_header_dropdown py-3">
+                            <span class="cart_amount">0</span>
+
+                            <!-- Header cart noti -->
+                            <div class="header-cart header-dropdown">
+                                <div class="cart">
+                                    <span class="empty">尚未有東西在購物車</span>
+                                </div>
+                                <div class="header-cart-total py-3 t-right">
+                                    Total:$ <span class="amount_total">0</span>
+                                </div>
+
+                                <div class="header-cart-buttons">
+                                    <div class="header-cart-wrapbtn">
+                                        <!-- Button -->
+                                        <a href="cart.html" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+                                            查看購物車
+                                        </a>
+                                    </div>
+
+                                    <div class="header-cart-wrapbtn">
+                                        <!-- Button -->
+                                        <a href="#" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+                                            登出
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="btn-show-menu-mobile hamburger hamburger--squeeze">
+                        <span class="hamburger-box">
+                            <span class="hamburger-inner"></span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Menu Mobile -->
+            <div class="wrap-side-menu">
+                <nav class="side-menu">
+                    <ul class="main-menu">
+
+                        <li class="item-menu-mobile">
+                            <a href="home.html">首頁</a>
+                        </li>
+
+                        <li class="item-menu-mobile">
+                            <a href="region.html">地區</a>
+                            <ul class="sub-menu">
+                                <li><a href="#">日本</a></li>
+                                <li><a href="#">韓國</a></li>
+                                <li><a href="#">菲律賓</a></li>
+                            </ul>
+                            <i class="arrow-main-menu fa fa-angle-right" aria-hidden="true"></i>
+                        </li>
+
+                        <li class="item-menu-mobile">
+                            <a href="product.html">費用</a>
+                        </li>
+
+                        <li class="item-menu-mobile">
+                            <a href="cart.html">Features</a>
+                        </li>
+
+                        <li class="item-menu-mobile">
+                            <a href="blog.html">Blog</a>
+                        </li>
+
+                        <li class="item-menu-mobile">
+                            <a href="about.html">關於</a>
+                        </li>
+
+                        <li class="item-menu-mobile">
+                            <a href="contact.html">聯絡我們</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Header Info E-->
+        <!-- Header End-->
+        @RenderBody()
+        <!-- Footer Section Begin -->
+        <footer class="footer-section spad">
+            @*<div class="container">
+                <div class="newslatter-form">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <form action="#">
+                                <input type="text" placeholder="Your email address">
+                                <button type="submit">Subscribe to our newsletter</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-widget">
+                    <div class="row">
+                        <div class="col-lg-3 col-sm-6">
+                            <div class="single-footer-widget">
+                                <h4>About us</h4>
+                                <ul>
+                                    <li>About Us</li>
+                                    <li>Community</li>
+                                    <li>Jobs</li>
+                                    <li>Shipping</li>
+                                    <li>Contact Us</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6">
+                            <div class="single-footer-widget">
+                                <h4>Customer Care</h4>
+                                <ul>
+                                    <li>Search</li>
+                                    <li>Privacy Policy</li>
+                                    <li>2019 Lookbook</li>
+                                    <li>Shipping & Delivery</li>
+                                    <li>Gallery</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6">
+                            <div class="single-footer-widget">
+                                <h4>Our Services</h4>
+                                <ul>
+                                    <li>Free Shipping</li>
+                                    <li>Free Returnes</li>
+                                    <li>Our Franchising</li>
+                                    <li>Terms and conditions</li>
+                                    <li>Privacy Policy</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6">
+                            <div class="single-footer-widget">
+                                <h4>Information</h4>
+                                <ul>
+                                    <li>Payment methods</li>
+                                    <li>Times and shipping costs</li>
+                                    <li>Product Returns</li>
+                                    <li>Shipping methods</li>
+                                    <li>Conformity of the products</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="social-links-warp">
+                <div class="container">
+                    <div class="social-links">
+                        <a href="" class="instagram"><i class="fa fa-instagram"></i><span>instagram</span></a>
+                        <a href="" class="pinterest"><i class="fa fa-pinterest"></i><span>pinterest</span></a>
+                        <a href="" class="facebook"><i class="fa fa-facebook"></i><span>facebook</span></a>
+                        <a href="" class="twitter"><i class="fa fa-twitter"></i><span>twitter</span></a>
+                        <a href="" class="youtube"><i class="fa fa-youtube"></i><span>youtube</span></a>
+                        <a href="" class="tumblr"><i class="fa fa-tumblr-square"></i><span>tumblr</span></a>
+                    </div>
+                </div>
+
+                <div class="container text-center pt-5">
+                    <p>
+                         Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. 
+                        Copyright &copy;
+                        <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart color-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                         Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. 
+                    </p>
+                </div>
+
+
+            </div>*@
+        </footer>
+    }
+
+    else if (Session["Account"].ToString() == "aaa111")
+    {
+        <!-- Header Section Begin -->
+        <header class="header-section">
+            <div class="container-fluid">
+                <h2 class="text-center font-weight-bold">後台管理</h2>
+                <div class="inner-header bg-dark">
+                    <div class="header-right ">
+                        @Html.Partial("_Login")
+                    </div>
+
+                    <nav class="main-menu mobile-menu">
+                        <ul>
+                            <li> <a>@Html.ActionLink("新增商品", "Item", "Server")</a></li>
+                            <li><a>@Html.ActionLink("訂購明細", "Order", "Server")</a></li>
+                            <li><a>@Html.ActionLink("員工帳號", "Employee", "Server")</a></li>
+                            <li><a>@Html.ActionLink("會員帳號", "Member", "Server")</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            @RenderBody()
+        </header>
+    }
+
+    <!-- Footer Section End -->
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,16 @@
+﻿    <div class="user-access">
+
+        @if (Session["Account"] == null)
+        {
+            <a href="@Url.Action("Login","Login", new { id = "cartItem"})">
+                <li class="fas fa-user"></li>
+            </a>
+        }
+        else
+        {
+            <a class="ml-3">@Html.ActionLink("" + Session["Account"], "Index", "Home")</a>
+            <a href="@Url.Action("Logout","Login", new { id = "cartItem"})">
+                <i class="fas fa-sign-out-alt"></i>
+            </a>
+        }
+    </div>

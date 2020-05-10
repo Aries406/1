@@ -1,0 +1,13 @@
+﻿@model IEnumerable<ShopWeb.Models.admin>
+
+@using (Html.BeginForm("Index", "Search", FormMethod.Get))
+{
+    @Html.TextBox("search")<input type="submit" value="11" />
+}
+
+@foreach(var item in Model)
+{
+    @item.Account
+
+
+}

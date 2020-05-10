@@ -1,0 +1,177 @@
+{
+    "Items": [{
+            "name": "新鯨豔宿霧5日",
+            "newPrice": 15000,
+            "images": "images/item-01.jpg",
+            "country": "東南亞",
+            "zone": "宿霧"
+        },
+        {
+            "name": "北海道5日遊",
+            "newPrice": 27000,
+            "images": "images/item-02.jpg",
+            "country": "日本",
+            "zone": "北海道"
+        },
+        {
+            "name": "峇里島5日遊",
+            "newPrice": 20000,
+            "images": "images/item-03.jpg",
+            "country": "東南亞",
+            "zone": "峇里島"
+        },
+        {
+            "name": "大阪5日遊",
+            "oldPrice": 28000,
+            "newPrice": 25000,
+            "images": "images/item-04.jpg",
+            "country": "日本",
+            "zone": "大阪"
+        },
+        {
+            "name": "沖繩5日遊",
+            "newPrice": 25000,
+            "images": "images/item-05.jpg",
+            "country": "日本",
+            "zone": "沖繩"
+        },
+        {
+            "name": "釜山5日遊",
+            "newPrice": 25000,
+            "images": "images/item-06.jpg",
+            "country": "韓國",
+            "zone": "釜山"
+        },
+        {
+            "name": "新加坡5日遊",
+            "newPrice": 25000,
+            "images": "images/item-07.jpg",
+            "country": "東南亞",
+            "zone": "新加坡"
+        },
+        {
+            "name": "泰國5日遊",
+            "newPrice": 25000,
+            "images": "images/item-08.jpg",
+            "country": "東南亞",
+            "zone": "泰國"
+        },
+        {
+            "name": "東京5日行",
+            "newPrice": 35000,
+            "images": "images/item-09.jpg",
+            "country": "日本",
+            "zone": "東京"
+        },
+        {
+            "name": "馬來新魅力5日",
+            "oldPrice": 25000,
+            "newPrice": 22900,
+            "images": "images/item-10.jpg",
+            "country": "東南亞",
+            "zone": "馬來西亞"
+        },
+        {
+            "name": "首爾五日行",
+            "oldPrice": 25900,
+            "newPrice": 21900,
+            "images": "images/item-11.jpg",
+            "country": "韓國",
+            "zone": "首爾"
+        },
+        {
+            "name": "名古屋5日行",
+            "oldPrice": 35000,
+            "newPrice": 31900,
+            "images": "images/item-12.jpg",
+            "country": "日本",
+            "zone": "名古屋"
+        },
+        {
+            "name": "長灘島5日遊",
+            "newPrice": 18500,
+            "images": "images/item-13.jpg",
+            "country": "東南亞",
+            "zone": "長灘島"
+        }
+    ],
+    "Tab": [{
+        "Tab1": [{
+                "name": "新鯨豔宿霧5日",
+                "newPrice": 15000,
+                "images": "images/item-01.jpg",
+                "desc": "資生堂島+魚類保護區浮潛+BBQ海鮮餐、免費升等兩晚渡假村(不含稅簽)"
+            },
+            {
+                "name": "北海道五日遊",
+                "newPrice": 27000,
+                "images": "images/item-02.jpg",
+                "desc": "層雲峽、旭山動物園、米其林夜景、小樽漫遊、雙溫泉五日"
+            },
+            {
+                "name": "峇里島5日遊",
+                "newPrice": 20000,
+                "images": "images/item-03.jpg",
+                "desc": "貝尼達島+金銀島+海底摩托車+海景鞦韆、夕陽單車遊、探險泛舟、精油SPA 2小時、海鮮霸王餐 出發"
+            },
+            {
+                "name": "沖繩5日遊",
+                "newPrice": 25000,
+                "images": "images/item-05.jpg",
+                "desc": "沖繩醉療癒~ORION啤酒‧琉球雪景‧幸福的果報崖‧海景腳踏車輕遊五日"
+            }, {
+                "name": "泰國5日遊",
+                "newPrice": 25000,
+                "images": "images/item-08.jpg",
+                "desc": "聖托里尼希臘村＋愛與希望之宮＋水上市場＋巨石摩艾咖啡＋夜市５日"
+            },
+            {
+                "name": "東京5日行",
+                "newPrice": 35000,
+                "images": "images/item-09.jpg",
+                "desc": "藍色粉蝶.紫藤.粉紅芝櫻.日光東照宮.輕井澤.小布施善光寺.溫泉5日"
+            }
+        ],
+        "Tab2": [{
+                "name": "大阪5日遊",
+                "oldPrice": 28000,
+                "newPrice": 25000,
+                "images": "images/item-04.jpg",
+                "desc": "暢遊五都.金閣寺.有馬溫泉.奈良梅花鹿公園.貓咪站長和歌山電鐵.大阪城5日"
+            },
+            {
+                "name": "首爾五日行",
+                "oldPrice": 25900,
+                "newPrice": 21900,
+                "images": "images/item-02.jpg",
+                "desc": "SBS推薦AAA長腳蟹、愛寶樂園、LUGE渠道滑車+景觀纜車+展望台、塗鴉秀五日"
+            },
+            {
+                "name": "馬來新魅力5日",
+                "oldPrice": 25000,
+                "newPrice": 22900,
+                "images": "images/item-10.jpg",
+                "desc": "怡保雙威迷失樂園.椰殼洞.凱利古堡.怡保二奶巷.檳城和諧街.姓氏橋水上人家.三輪車慢遊古城.升旗山纜車.食物狂想館.臥佛寺.緬佛寺"
+            }
+        ],
+        "Tab3": [{
+                "name": "新鯨豔宿霧5日",
+                "newPrice": 15000,
+                "images": "images/item-01.jpg",
+                "desc": "資生堂島+魚類保護區浮潛+BBQ海鮮餐、免費升等兩晚渡假村(不含稅簽)"
+            },
+            {
+                "name": "泰國5日遊",
+                "newPrice": 25000,
+                "images": "images/item-08.jpg",
+                "desc": "聖托里尼希臘村＋愛與希望之宮＋水上市場＋巨石摩艾咖啡＋夜市５日"
+            },
+            {
+                "name": "長灘島5日遊",
+                "newPrice": 18500,
+                "images": "images/item-13.jpg",
+                "desc": "海上巡禮.珊瑚海域浮潛.星期五海灘"
+            }
+        ]
+    }]
+}
